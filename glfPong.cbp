@@ -14,9 +14,11 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
-					<Add directory="Libraries/glew-1.10.0/include" />
-					<Add directory="Libraries/glm/glm" />
+					<Add option="-DSFML_DYNAMIC" />
+					<Add directory="Include" />
 					<Add directory="Libraries/SFML2.1/SFML-2.1/include" />
+					<Add directory="Libraries/glm/glm" />
+					<Add directory="Libraries/glew-1.10.0/include" />
 				</Compiler>
 				<Linker>
 					<Add library="sfml-graphics-d" />
@@ -24,6 +26,7 @@
 					<Add library="sfml-system-d" />
 					<Add library="glew32" />
 					<Add library="opengl32" />
+					<Add library="glu32" />
 					<Add directory="Libraries/glew-1.10.0/lib" />
 					<Add directory="Libraries/SFML2.1/SFML-2.1/lib" />
 				</Linker>
@@ -44,6 +47,8 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Include/Game.hpp" />
+		<Unit filename="Source/Game.cpp" />
 		<Unit filename="Source/main.cpp" />
 		<Extensions>
 			<code_completion />
