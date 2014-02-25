@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "Paddle.hpp"
+#include "Ball.hpp"
 
 #include <GL/glew.h>
 #include <GL/gl.h>
@@ -99,12 +100,14 @@ void Game::setupGL()
 
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
+    glEnable(GL_POINT_SMOOTH);
     glDisable(GL_DEPTH_TEST);
 }
 
 void Game::createEntities()
 {
     m_Entities["Paddle"] = std::unique_ptr<Paddle>(new Paddle(10.f, 10.f, 15.f, 150.f));
+    m_Entities["Ball"] = std::unique_ptr<Ball>(new Ball(WIDTH / 2.f, HEIGHT / 2.f, 15.f));
 }
 
 Game::~Game()
