@@ -7,6 +7,7 @@ Paddle::Paddle(float x, float y, float width, float height)
     , m_Y(y)
     , m_Width(width)
     , m_Height(height)
+    , m_Speed(5.f)
 {
     setupVertices();
     setupColors();
@@ -59,17 +60,34 @@ void Paddle::render()
     glBindBuffer(GL_ARRAY_BUFFER, m_VertexBuffer);
     glVertexPointer(3, GL_FLOAT, 0, 0);
 
+    glPushMatrix();
+    glTranslatef(m_X, m_Y, 0.f);
+
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
+
+    glPopMatrix();
+}
+
+bool Paddle::atTop() const
+{
+    return (m_Y + m_Height) >= 480.f;
 }
 
 void Paddle::moveUp()
 {
+    if (!atTop())
+        m_Y += m_Speed;
+}
 
+bool Paddle::atBottom() const
+{
+    return m_Y <= 0.f;
 }
 
 void Paddle::moveDown()
 {
-
+    if (!atBottom())
+        m_Y -= m_Speed;
 }
 
 Paddle::~Paddle()

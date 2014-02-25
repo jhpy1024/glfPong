@@ -29,6 +29,17 @@ void Game::handleInput()
             break;
         }
     }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+    {
+        auto paddlePtr = static_cast<Paddle*>(m_Entities["Paddle"].get());
+        paddlePtr->moveUp();
+    }
+    else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+    {
+        auto paddlePtr = static_cast<Paddle*>(m_Entities["Paddle"].get());
+        paddlePtr->moveDown();
+    }
 }
 
 void Game::update()
@@ -93,7 +104,7 @@ void Game::setupGL()
 
 void Game::createEntities()
 {
-    m_Entities["Paddle"] = std::unique_ptr<Paddle>(new Paddle(10.f, 10.f, 50.f, 100.f));
+    m_Entities["Paddle"] = std::unique_ptr<Paddle>(new Paddle(10.f, 10.f, 15.f, 150.f));
 }
 
 Game::~Game()

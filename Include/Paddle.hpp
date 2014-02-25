@@ -24,6 +24,9 @@ private:
     void setupVertices();
     void setupColors();
 
+    bool atTop() const;
+    bool atBottom() const;
+
 private:
     GLuint m_VertexBuffer;
     GLuint m_ColorBuffer;
@@ -33,6 +36,8 @@ private:
 
     const float m_Width;
     const float m_Height;
+
+    const float m_Speed;
 };
 
 #endif // PADDLE_HPP

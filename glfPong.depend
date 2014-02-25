@@ -2,7 +2,7 @@
 1393346170 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\main.cpp
 	"Game.hpp"
 
-1393346584 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
+1393348295 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
 	"Game.hpp"
 	"Paddle.hpp"
 	<GL/glew.h>
@@ -10,7 +10,7 @@
 	<GL/glu.h>
 	<iostream>
 
-1393346534 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
+1393346750 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
 	<SFML/Graphics.hpp>
 	"Entity.hpp"
 	<vector>
@@ -358,13 +358,13 @@
 	<OpenGL/glu.h>
 	<GL/glu.h>
 
-1393346293 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\paddle.hpp
+1393348358 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\paddle.hpp
 	<SFML/Graphics.hpp>
 	<GL/glew.h>
 	<GL/gl.h>
 	"Entity.hpp"
 
-1393345653 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\paddle.cpp
+1393348256 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\paddle.cpp
 	"Paddle.hpp"
 	<iostream>
 
