@@ -8,8 +8,8 @@
 
 Ball::Ball(float centerX, float centerY, float radius)
     : Entity(centerX, centerY, radius, radius)
-    , m_VelocityX(-1.f)
-    , m_VelocityY(0.f)
+    , m_VelocityX(randomVelocity())
+    , m_VelocityY(randomVelocity())
     , m_Speed(5.f)
     , m_Rotation(0.f)
     , m_RotationDirection(1.f)
@@ -93,7 +93,22 @@ void Ball::setupColors()
 
 void Ball::hitPaddle()
 {
-    std::cout << "Ow, who put that paddle there?!" << std::endl;
+    m_VelocityX = -m_VelocityX;
+}
+
+void Ball::checkWallCollisions()
+{
+    // == Right wall
+    if ((m_X + m_Width / 2.f) >= 640.f)
+        m_VelocityX = -m_VelocityX;
+
+    // == Bottom wall
+    if ((m_Y - m_Height / 2.f) <= 0.f)
+        m_VelocityY = -m_VelocityY;
+
+    // == Top wall
+    if ((m_Y + m_Height / 2.f) >= 480.f)
+        m_VelocityY = -m_VelocityY;
 }
 
 void Ball::update()
@@ -102,6 +117,8 @@ void Ball::update()
     m_Y += (m_VelocityY * m_Speed);
 
     m_Rotation += (m_RotationSpeed * m_RotationDirection);
+
+    checkWallCollisions();
 }
 
 void Ball::render()

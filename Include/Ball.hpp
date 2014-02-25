@@ -23,6 +23,8 @@ private:
 
     float randomVelocity() const;
 
+    void checkWallCollisions();
+
 private:
     GLuint m_VertexBuffer;
     GLuint m_ColorBuffer;
