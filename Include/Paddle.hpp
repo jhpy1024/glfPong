@@ -29,12 +29,6 @@ private:
     GLuint m_VertexBuffer;
     GLuint m_ColorBuffer;
 
-    float m_X;
-    float m_Y;
-
-    const float m_Width;
-    const float m_Height;
-
     const float m_Speed;
 };
 

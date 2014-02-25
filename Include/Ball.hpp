@@ -19,17 +19,20 @@ private:
     void setupVertices();
     void setupColors();
 
+    float randomVelocity() const;
+
 private:
     GLuint m_VertexBuffer;
     GLuint m_ColorBuffer;
 
-    const float m_Radius;
-
-    float m_X;
-    float m_Y;
-
     float m_VelocityX;
     float m_VelocityY;
+
+    const float m_Speed;
+
+    float m_Rotation;
+    float m_RotationDirection;
+    const float m_RotationSpeed;
 };
 
 #endif // BALL_HPP

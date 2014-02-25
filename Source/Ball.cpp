@@ -3,15 +3,36 @@
 #include "Ball.hpp"
 
 #include <iostream>
-#include <cmath>
+#include <ctime>
+#include <random>
 
 Ball::Ball(float centerX, float centerY, float radius)
-    : m_Radius(radius)
-    , m_X(centerX)
-    , m_Y(centerY)
+    : Entity(centerX, centerY, radius, radius)
+    , m_VelocityX(randomVelocity())
+    , m_VelocityY(randomVelocity())
+    , m_Speed(5.f)
+    , m_Rotation(0.f)
+    , m_RotationDirection(1.f)
+    , m_RotationSpeed(4.f)
 {
     setupVertices();
     setupColors();
+}
+
+float Ball::randomVelocity() const
+{
+    static bool engineSeeded = false;
+
+    static std::default_random_engine randEng;
+    std::uniform_real_distribution<float> distribution(-1.f, 1.f);
+
+    if (!engineSeeded)
+    {
+        randEng.seed(time(NULL));
+        engineSeeded = true;
+    }
+
+    return distribution(randEng);
 }
 
 void Ball::setupVertices()
@@ -24,9 +45,9 @@ void Ball::setupVertices()
     {
         float angleRads = (i * PI) / 180.f;
 
-        vertices[i] = (std::cos(angleRads) * m_Radius);      // X
-        vertices[i + 1] = (std::sin(angleRads) * m_Radius);  // Y
-        vertices[i + 2] = 0.f;                               // Z
+        vertices[i] = (std::cos(angleRads) * (m_Width / 2.f));      // X
+        vertices[i + 1] = (std::sin(angleRads) * (m_Width / 2.f));  // Y
+        vertices[i + 2] = 0.f;                                      // Z
     }
 
     glGenBuffers(1, &m_VertexBuffer);
@@ -72,7 +93,10 @@ void Ball::setupColors()
 
 void Ball::update()
 {
+    m_X += (m_VelocityX * m_Speed);
+    m_Y += (m_VelocityY * m_Speed);
 
+    m_Rotation += (m_RotationSpeed * m_RotationDirection);
 }
 
 void Ball::render()
@@ -84,7 +108,9 @@ void Ball::render()
     glVertexPointer(3, GL_FLOAT, 0, 0);
 
     glPushMatrix();
+
     glTranslatef(m_X, m_Y, 0.f);
+    glRotatef(m_Rotation, 0.f, 0.f, 1.f);
 
     glDrawArrays(GL_POINTS, 0, 360);
 

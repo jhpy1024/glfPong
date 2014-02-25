@@ -3,10 +3,7 @@
 #include <iostream>
 
 Paddle::Paddle(float x, float y, float width, float height)
-    : m_X(x)
-    , m_Y(y)
-    , m_Width(width)
-    , m_Height(height)
+    : Entity(x, y, width, height)
     , m_Speed(5.f)
 {
     setupVertices();
