@@ -3,8 +3,6 @@
 
 #include <SFML/Graphics.hpp>
 
-#include <vector>
-
 // glew.h *must* be included before gl.h
 #include <GL/glew.h>
 #include <GL/gl.h>
@@ -31,11 +29,6 @@ private:
     const std::string TITLE;
 
     sf::Window m_Window;
-
-    GLuint m_VertBuf;
-    GLuint m_ColorBuf;
-    std::vector<float> m_Vertices;
-    std::vector<float> m_Colors;
 };
 
 #endif // GAME_HPP
