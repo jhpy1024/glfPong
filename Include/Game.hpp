@@ -3,14 +3,16 @@
 
 #include <SFML/Graphics.hpp>
 
-// glew.h *must* be included before gl.h
-#include <GL/glew.h>
-#include <GL/gl.h>
+#include "Entity.hpp"
+
+#include <vector>
+#include <memory>
 
 class Game
 {
 public:
     Game(unsigned width, unsigned height, const std::string& title);
+    ~Game();
 
     void run();
 
@@ -21,7 +23,7 @@ public:
 private:
     void createWindow();
     void setupGL();
-    void cleanUp();
+    void createEntities();
 
 private:
     const unsigned WIDTH;
@@ -29,6 +31,8 @@ private:
     const std::string TITLE;
 
     sf::Window m_Window;
+
+    std::map<std::string, std::unique_ptr<Entity>> m_Entities;
 };
 
 #endif // GAME_HPP

@@ -1,16 +1,20 @@
 # depslib dependency file v1.0
-1393279874 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\main.cpp
+1393346170 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\main.cpp
 	"Game.hpp"
 
-1393279195 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
+1393346584 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
 	"Game.hpp"
+	"Paddle.hpp"
+	<GL/glew.h>
+	<GL/gl.h>
 	<GL/glu.h>
 	<iostream>
 
-1393343450 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
+1393346534 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
 	<SFML/Graphics.hpp>
-	<GL/glew.h>
-	<GL/gl.h>
+	"Entity.hpp"
+	<vector>
+	<memory>
 
 1391887278 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\libraries\sfml2.1\sfml-2.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
@@ -353,4 +357,16 @@
 	<inttypes.h>
 	<OpenGL/glu.h>
 	<GL/glu.h>
+
+1393346293 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\paddle.hpp
+	<SFML/Graphics.hpp>
+	<GL/glew.h>
+	<GL/gl.h>
+	"Entity.hpp"
+
+1393345653 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\paddle.cpp
+	"Paddle.hpp"
+	<iostream>
+
+1393346261 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\entity.hpp
 
