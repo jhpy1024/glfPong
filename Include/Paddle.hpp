@@ -1,8 +1,6 @@
 #ifndef PADDLE_HPP
 #define PADDLE_HPP
 
-#include <SFML/Graphics.hpp>
-
 #include <GL/glew.h>
 #include <GL/gl.h>
 
