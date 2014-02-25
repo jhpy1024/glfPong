@@ -70,18 +70,18 @@ void Ball::setupColors()
             colors[i + 1] = 0.f;
             colors[i + 2] = 0.f;
         }
-        // == Green section
+        // == Yellow section
         else if (i >= 120 && i < 240)
         {
-            colors[i] = 0.f;
-            colors[i + 1] = 1.f;
+            colors[i] = 1.f;
+            colors[i + 1] = 0.9f;
             colors[i + 2] = 0.f;
         }
-        // == Blue section
+        // == Cyan section
         else if (i >= 240 && i < 360)
         {
             colors[i] = 0.f;
-            colors[i + 1] = 0.f;
+            colors[i + 1] = 1.f;
             colors[i + 2] = 1.f;
         }
     }
