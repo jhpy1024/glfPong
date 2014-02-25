@@ -25,6 +25,8 @@ private:
     void setupGL();
     void createEntities();
 
+    void handleCollisions();
+
 private:
     const unsigned WIDTH;
     const unsigned HEIGHT;

@@ -15,6 +15,8 @@ public:
     void update() override;
     void render() override;
 
+    void hitPaddle();
+
 private:
     void setupVertices();
     void setupColors();

@@ -49,6 +49,8 @@ void Game::update()
     {
         entity.second->update();
     }
+
+    handleCollisions();
 }
 
 void Game::render()
@@ -62,6 +64,40 @@ void Game::render()
     }
 
     m_Window.display();
+}
+
+void Game::handleCollisions()
+{
+    // == Paddle position/size
+    float pX = m_Entities["Paddle"]->getX();
+    float pY = m_Entities["Paddle"]->getY();
+    float pW = m_Entities["Paddle"]->getWidth();
+    float pH = m_Entities["Paddle"]->getHeight();
+
+    // == Ball position/size
+    float bX = m_Entities["Ball"]->getX();
+    float bY = m_Entities["Ball"]->getY();
+    float bW = m_Entities["Ball"]->getWidth();
+    float bH = m_Entities["Ball"]->getHeight();
+
+    sf::FloatRect paddleRect;
+    sf::FloatRect ballRect;
+
+    paddleRect.left = pX;
+    paddleRect.top = pY + pH;
+    paddleRect.width = pW;
+    paddleRect.height = -pH;
+
+    ballRect.left = bX;
+    ballRect.top = bY + bH;
+    ballRect.width = bW;
+    ballRect.height = -bH;
+
+    if (paddleRect.intersects(ballRect))
+    {
+        auto ballPtr = static_cast<Ball*>(m_Entities["Ball"].get());
+        ballPtr->hitPaddle();
+    }
 }
 
 void Game::run()

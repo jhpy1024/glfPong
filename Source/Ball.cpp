@@ -8,8 +8,8 @@
 
 Ball::Ball(float centerX, float centerY, float radius)
     : Entity(centerX, centerY, radius, radius)
-    , m_VelocityX(randomVelocity())
-    , m_VelocityY(randomVelocity())
+    , m_VelocityX(-1.f)
+    , m_VelocityY(0.f)
     , m_Speed(5.f)
     , m_Rotation(0.f)
     , m_RotationDirection(1.f)
@@ -89,6 +89,11 @@ void Ball::setupColors()
     glGenBuffers(1, &m_ColorBuffer);
     glBindBuffer(GL_ARRAY_BUFFER, m_ColorBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(float) * 360, colors, GL_STATIC_DRAW);
+}
+
+void Ball::hitPaddle()
+{
+    std::cout << "Ow, who put that paddle there?!" << std::endl;
 }
 
 void Ball::update()
