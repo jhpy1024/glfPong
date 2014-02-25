@@ -88,7 +88,7 @@ void Game::handleCollisions()
     paddleRect.width = pW;
     paddleRect.height = -pH;
 
-    ballRect.left = bX;
+    ballRect.left = bX - bW;
     ballRect.top = bY + bH;
     ballRect.width = bW;
     ballRect.height = -bH;
@@ -143,7 +143,7 @@ void Game::setupGL()
 void Game::createEntities()
 {
     m_Entities["Paddle"] = std::unique_ptr<Paddle>(new Paddle(10.f, 10.f, 15.f, 150.f));
-    m_Entities["Ball"] = std::unique_ptr<Ball>(new Ball(WIDTH / 2.f, HEIGHT / 2.f, 15.f));
+    m_Entities["Ball"] = std::unique_ptr<Ball>(new Ball(WIDTH / 2.f, HEIGHT / 2.f, 10.f));
 }
 
 Game::~Game()

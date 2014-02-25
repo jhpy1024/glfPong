@@ -7,13 +7,13 @@
 #include <random>
 
 Ball::Ball(float centerX, float centerY, float radius)
-    : Entity(centerX, centerY, radius, radius)
+    : Entity(centerX, centerY, radius * 2.f, radius * 2.f)
     , m_VelocityX(randomVelocity())
     , m_VelocityY(randomVelocity())
     , m_Speed(5.f)
     , m_Rotation(0.f)
     , m_RotationDirection(1.f)
-    , m_RotationSpeed(4.f)
+    , m_RotationSpeed(5.f)
 {
     setupVertices();
     setupColors();
@@ -45,9 +45,9 @@ void Ball::setupVertices()
     {
         float angleRads = (i * PI) / 180.f;
 
-        vertices[i] = (std::cos(angleRads) * (m_Width / 2.f));      // X
-        vertices[i + 1] = (std::sin(angleRads) * (m_Width / 2.f));  // Y
-        vertices[i + 2] = 0.f;                                      // Z
+        vertices[i] = (std::cos(angleRads) * (m_Width / 2.f));       // X
+        vertices[i + 1] = (std::sin(angleRads) * (m_Height / 2.f));  // Y
+        vertices[i + 2] = 0.f;                                       // Z
     }
 
     glGenBuffers(1, &m_VertexBuffer);
@@ -94,21 +94,31 @@ void Ball::setupColors()
 void Ball::hitPaddle()
 {
     m_VelocityX = -m_VelocityX;
+    m_RotationDirection = -m_RotationDirection;
 }
 
 void Ball::checkWallCollisions()
 {
     // == Right wall
     if ((m_X + m_Width / 2.f) >= 640.f)
+    {
         m_VelocityX = -m_VelocityX;
+        m_RotationDirection = -m_RotationDirection;
+    }
 
     // == Bottom wall
     if ((m_Y - m_Height / 2.f) <= 0.f)
+    {
         m_VelocityY = -m_VelocityY;
+        m_RotationDirection = -m_RotationDirection;
+    }
 
     // == Top wall
     if ((m_Y + m_Height / 2.f) >= 480.f)
+    {
         m_VelocityY = -m_VelocityY;
+        m_RotationDirection = -m_RotationDirection;
+    }
 }
 
 void Ball::update()
