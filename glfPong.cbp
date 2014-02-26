@@ -47,8 +47,14 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Include/Ball.hpp" />
+		<Unit filename="Include/Entity.hpp" />
 		<Unit filename="Include/Game.hpp" />
+		<Unit filename="Include/Paddle.hpp" />
+		<Unit filename="Source/Ball.cpp" />
+		<Unit filename="Source/Entity.cpp" />
 		<Unit filename="Source/Game.cpp" />
+		<Unit filename="Source/Paddle.cpp" />
 		<Unit filename="Source/main.cpp" />
 		<Extensions>
 			<code_completion />

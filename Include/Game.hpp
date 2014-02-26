@@ -24,6 +24,7 @@ private:
     void createWindow();
     void setupGL();
     void createEntities();
+    void createText();
 
     void handleCollisions();
 
@@ -32,9 +33,12 @@ private:
     const unsigned HEIGHT;
     const std::string TITLE;
 
-    sf::Window m_Window;
+    sf::RenderWindow m_Window;
 
     std::map<std::string, std::unique_ptr<Entity>> m_Entities;
+
+    sf::Font m_Font;
+    sf::Text m_Text;
 };
 
 #endif // GAME_HPP

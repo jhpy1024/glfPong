@@ -63,6 +63,11 @@ void Game::render()
         entity.second->render();
     }
 
+    m_Window.pushGLStates();
+    m_Window.resetGLStates();
+    m_Window.draw(m_Text);
+    m_Window.popGLStates();
+
     m_Window.display();
 }
 
@@ -105,6 +110,7 @@ void Game::run()
     createWindow();
     setupGL();
     createEntities();
+    createText();
 
     while (m_Window.isOpen())
     {
@@ -144,6 +150,19 @@ void Game::createEntities()
 {
     m_Entities["Paddle"] = std::unique_ptr<Paddle>(new Paddle(10.f, 10.f, 15.f, 150.f));
     m_Entities["Ball"] = std::unique_ptr<Ball>(new Ball(WIDTH / 2.f, HEIGHT / 2.f, 10.f));
+}
+
+void Game::createText()
+{
+    m_Font.loadFromFile("arial.ttf");
+
+    m_Text.setFont(m_Font);
+    m_Text.setCharacterSize(12.f);
+    m_Text.setString("Testing, testing!");
+    m_Text.setColor(sf::Color::White);
+    //m_Text.setOrigin(m_Text.getLocalBounds().left + m_Text.getLocalBounds().width / 2.f,
+      //               m_Text.getLocalBounds().top + m_Text.getLocalBounds().height / 2.f);
+    m_Text.setPosition(WIDTH / 2.f, HEIGHT / 2.f);
 }
 
 Game::~Game()
