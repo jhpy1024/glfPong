@@ -359,8 +359,7 @@
 	<OpenGL/glu.h>
 	<GL/glu.h>
 
-1393354572 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\paddle.hpp
-	<GL/glew.h>
+1393451010 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\paddle.hpp
 	<GL/gl.h>
 	"Entity.hpp"
 
@@ -376,11 +375,21 @@
 	<ctime>
 	<random>
 
-1393360330 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\ball.hpp
+1393451082 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\ball.hpp
 	"Entity.hpp"
-	<GL/glew.h>
 	<GL/gl.h>
 
 1393354697 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\entity.cpp
 	"Entity.hpp"
+
+1368276560 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\libraries\freeglut\include\gl\glut.h
+	"freeglut_std.h"
+
+1368276560 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\libraries\freeglut\include\gl\freeglut_std.h
+	<windows.h>
+	<OpenGL/gl.h>
+	<OpenGL/glu.h>
+	<GL/gl.h>
+	<GL/glu.h>
+	<stdlib.h>
 

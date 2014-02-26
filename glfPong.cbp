@@ -14,21 +14,13 @@
 				<Compiler>
 					<Add option="-std=c++11" />
 					<Add option="-g" />
-					<Add option="-DSFML_DYNAMIC" />
 					<Add directory="Include" />
-					<Add directory="Libraries/SFML2.1/SFML-2.1/include" />
-					<Add directory="Libraries/glm/glm" />
-					<Add directory="Libraries/glew-1.10.0/include" />
+					<Add directory="Libraries/freeglut/include" />
 				</Compiler>
 				<Linker>
-					<Add library="sfml-graphics-d" />
-					<Add library="sfml-window-d" />
-					<Add library="sfml-system-d" />
-					<Add library="glew32" />
+					<Add library="freeglut" />
 					<Add library="opengl32" />
-					<Add library="glu32" />
-					<Add directory="Libraries/glew-1.10.0/lib" />
-					<Add directory="Libraries/SFML2.1/SFML-2.1/lib" />
+					<Add directory="Libraries/freeglut/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -47,14 +39,6 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="Include/Ball.hpp" />
-		<Unit filename="Include/Entity.hpp" />
-		<Unit filename="Include/Game.hpp" />
-		<Unit filename="Include/Paddle.hpp" />
-		<Unit filename="Source/Ball.cpp" />
-		<Unit filename="Source/Entity.cpp" />
-		<Unit filename="Source/Game.cpp" />
-		<Unit filename="Source/Paddle.cpp" />
 		<Unit filename="Source/main.cpp" />
 		<Extensions>
 			<code_completion />
