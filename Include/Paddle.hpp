@@ -17,6 +17,7 @@ public:
 
     void moveUp();
     void moveDown();
+    void stopMoving();
 
 private:
     void setupVertices();
@@ -30,6 +31,8 @@ private:
     GLuint m_ColorBuffer;
 
     const float m_Speed;
+
+    float m_VelocityY;
 };
 
 #endif // PADDLE_HPP

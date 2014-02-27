@@ -2,6 +2,7 @@
 #include "Paddle.hpp"
 
 #include <GL/gl.h>
+#include <GL/glut.h>
 
 Game::Game()
 {
@@ -38,12 +39,39 @@ void Game::keyPressed(unsigned char key, int x, int y)
 
 void Game::specialKeyPressed(int key, int x, int y)
 {
-
+    switch (key)
+    {
+    case GLUT_KEY_UP:
+    {
+        auto paddlePtr = static_cast<Paddle*>(m_Entities["Paddle"].get());
+        paddlePtr->moveUp();
+    }
+    break;
+    case GLUT_KEY_DOWN:
+    {
+        auto paddlePtr = static_cast<Paddle*>(m_Entities["Paddle"].get());
+        paddlePtr->moveDown();
+    }
+    break;
+    default:
+        break;
+    }
 }
 
 void Game::specialKeyReleased(int key, int x, int y)
 {
-
+    switch (key)
+    {
+    case GLUT_KEY_UP:
+    case GLUT_KEY_DOWN:
+    {
+        auto paddlePtr = static_cast<Paddle*>(m_Entities["Paddle"].get());
+        paddlePtr->stopMoving();
+    }
+    break;
+    default:
+        break;
+    }
 }
 
 void Game::mousePressed(int button, int state, int x, int y)

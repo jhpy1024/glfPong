@@ -4,7 +4,8 @@
 
 Paddle::Paddle(float x, float y, float width, float height)
     : Entity(x, y, width, height)
-    , m_Speed(5.f)
+    , m_Speed(350.f / 1000.f) // pixels per second
+    , m_VelocityY(0.f)
 {
     setupVertices();
     setupColors();
@@ -46,7 +47,18 @@ void Paddle::setupColors()
 
 void Paddle::update(int delta)
 {
+    if (atTop())
+    {
+        m_VelocityY = 0.f;
+        m_Y = 0.f;
+    }
+    else if (atBottom())
+    {
+        m_VelocityY = 0.f;
+        m_Y = 480.f - m_Height;
+    }
 
+    m_Y += (m_VelocityY * m_Speed * delta);
 }
 
 void Paddle::render()
@@ -67,28 +79,33 @@ void Paddle::render()
 
 bool Paddle::atTop() const
 {
-    return (m_Y + m_Height) >= 480.f;
+    return m_Y < 0.f;
 }
 
 void Paddle::moveUp()
 {
-    if (!atTop())
-        m_Y += m_Speed;
+    m_VelocityY = -1.f;
 }
 
 bool Paddle::atBottom() const
 {
-    return m_Y <= 0.f;
+    return (m_Y + m_Height) > 480.f;
 }
 
 void Paddle::moveDown()
 {
-    if (!atBottom())
-        m_Y -= m_Speed;
+    m_VelocityY = 1.f;
+}
+
+void Paddle::stopMoving()
+{
+    m_VelocityY = 0.f;
 }
 
 Paddle::~Paddle()
 {
+    std::cout << "Freeing paddle resources" << std::endl;
+
     glDeleteBuffers(1, &m_VertexBuffer);
     glDeleteBuffers(1, &m_ColorBuffer);
 }
