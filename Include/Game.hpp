@@ -1,6 +1,12 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
+#include "Entity.hpp"
+
+#include <map>
+#include <string>
+#include <memory>
+
 class Game
 {
 public:
@@ -14,6 +20,14 @@ public:
 
     void update(int delta);
     void render();
+
+    void run();
+
+private:
+    void createEntities();
+
+private:
+    std::map<std::string, std::unique_ptr<Entity>> m_Entities;
 };
 
 #endif // GAME_HPP
