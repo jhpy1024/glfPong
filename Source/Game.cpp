@@ -102,7 +102,7 @@ void Game::checkCollisions()
 void Game::update(int delta)
 {
     if (m_GameOver)
-        std::cout << "Game over!" << std::endl;
+        return;
 
     for (auto& entity : m_Entities)
         entity.second->update(delta);
@@ -112,11 +112,23 @@ void Game::update(int delta)
 
 void Game::render()
 {
+    if (m_GameOver)
+    {
+        renderGameOver();
+        return;
+    }
+
     for (auto& entity : m_Entities)
         entity.second->render();
 
     renderText(320.f, 20.f, "Score: " + util::toString(m_Score), 0.f, 1.f, 1.f);
     renderLivesText();
+}
+
+void Game::renderGameOver()
+{
+    renderText(320.f, 240.f, "Game Over!", 1.f, 0.f, 0.f);
+    renderText(320.f, 260.f, "Press [SPACE] to play again", 1.f, 1.f, 1.f);
 }
 
 void Game::renderLivesText()
@@ -158,9 +170,25 @@ void Game::run()
     createEntities();
 }
 
+void Game::resetGame()
+{
+    createEntities();
+    m_GameOver = false;
+    m_Score = 0;
+    m_Lives = 3;
+}
+
 // == Input callbacks ==
 void Game::keyPressed(unsigned char key, int x, int y)
 {
+    if (m_GameOver)
+    {
+        if (key == ' ')
+            resetGame();
+
+        return;
+    }
+
     if (key == 'r')
     {
         auto ballPtr = static_cast<Ball*>(m_Entities["Ball"].get());
@@ -170,6 +198,9 @@ void Game::keyPressed(unsigned char key, int x, int y)
 
 void Game::specialKeyPressed(int key, int x, int y)
 {
+    if (m_GameOver)
+        return;
+
     switch (key)
     {
     case GLUT_KEY_UP:

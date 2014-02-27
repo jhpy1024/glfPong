@@ -23,6 +23,7 @@ public:
 
     void update(int delta);
     void render();
+    void renderGameOver();
 
     void run();
 
@@ -37,6 +38,8 @@ private:
 
     void renderText(float x, float y, const std::string& text, float r, float g, float b);
     void renderLivesText();
+
+    void resetGame();
 
 private:
     std::map<std::string, std::unique_ptr<Entity>> m_Entities;

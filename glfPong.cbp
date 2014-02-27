@@ -16,11 +16,15 @@
 					<Add option="-g" />
 					<Add directory="Include" />
 					<Add directory="Libraries/freeglut/include" />
+					<Add directory="Libraries/glew-1.10.0/include" />
 				</Compiler>
 				<Linker>
 					<Add library="freeglut" />
 					<Add library="opengl32" />
+					<Add library="glu32" />
+					<Add library="glew32" />
 					<Add directory="Libraries/freeglut/lib" />
+					<Add directory="Libraries/glew-1.10.0/lib" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -39,6 +43,16 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="Include/Ball.hpp" />
+		<Unit filename="Include/Entity.hpp" />
+		<Unit filename="Include/Game.hpp" />
+		<Unit filename="Include/Paddle.hpp" />
+		<Unit filename="Include/Utils.hpp" />
+		<Unit filename="Include/Utils.inl" />
+		<Unit filename="Source/Ball.cpp" />
+		<Unit filename="Source/Entity.cpp" />
+		<Unit filename="Source/Game.cpp" />
+		<Unit filename="Source/Paddle.cpp" />
 		<Unit filename="Source/main.cpp" />
 		<Extensions>
 			<code_completion />
