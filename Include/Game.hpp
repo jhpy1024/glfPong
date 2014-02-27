@@ -36,6 +36,7 @@ private:
     // =========================
 
     void renderText(float x, float y, const std::string& text, float r, float g, float b);
+    void renderLivesText();
 
 private:
     std::map<std::string, std::unique_ptr<Entity>> m_Entities;

@@ -78,7 +78,7 @@ void Game::ballWallCollisions(Ball* ball)
     // == Left wall ==
     if (x <= 0.f)
     {
-        if (m_Lives > 0)
+        if (m_Lives >= 1)
         {
             --m_Lives;
             ball->reset();
@@ -116,7 +116,35 @@ void Game::render()
         entity.second->render();
 
     renderText(320.f, 20.f, "Score: " + util::toString(m_Score), 0.f, 1.f, 1.f);
-    renderText(320.f, 40.f, "Lives: " + util::toString(m_Lives), 0.f, 1.f, 1.f);
+    renderLivesText();
+}
+
+void Game::renderLivesText()
+{
+    float r;
+    float g;
+    float b;
+
+    if (m_Lives == 3)
+    {
+        r = 0.f;
+        g = 1.f;
+        b = 0.f;
+    }
+    else if (m_Lives == 2)
+    {
+        r = 1.f;
+        g = 1.f;
+        b = 0.f;
+    }
+    else if (m_Lives <= 1)
+    {
+        r = 1.f;
+        g = 0.f;
+        b = 0.f;
+    }
+
+    renderText(320.f, 40.f, "Lives: " + util::toString(m_Lives), r, g, b);
 }
 
 void Game::createEntities()
