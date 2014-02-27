@@ -161,7 +161,11 @@ void Game::run()
 // == Input callbacks ==
 void Game::keyPressed(unsigned char key, int x, int y)
 {
-
+    if (key == 'r')
+    {
+        auto ballPtr = static_cast<Ball*>(m_Entities["Ball"].get());
+        ballPtr->reset();
+    }
 }
 
 void Game::specialKeyPressed(int key, int x, int y)

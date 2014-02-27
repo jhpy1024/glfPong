@@ -38,7 +38,16 @@ void Ball::reset(bool fullReset)
 void Ball::setRandomVelocity()
 {
     float angle = rand() % 360;
+
+    // == Make sure the angle isn't too "vertical"
+    if (angle >= 70.f && angle <= 110.f)
+        angle += 90.f;
+    else if (angle >= 250.f && angle <= 290.f)
+        angle += 90.f;
+
     float angleRads = (angle * PI) / 180.f;
+
+    std::cout << "Random angle = " << angle << std::endl;
 
     m_VelocityX = cos(angleRads);
     m_VelocityY = sin(angleRads);
