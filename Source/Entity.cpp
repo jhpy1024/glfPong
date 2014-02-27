@@ -9,6 +9,7 @@ Entity::Entity(float x, float y, float width, float height)
 
 }
 
+// == Getters ==
 float Entity::getX() const
 {
     return m_X;
@@ -28,3 +29,24 @@ float Entity::getHeight() const
 {
     return m_Height;
 }
+// =============
+
+
+// == Setters ==
+void Entity::setX(float x)
+{
+    m_X = x;
+}
+
+void Entity::setY(float y)
+{
+    m_Y = y;
+}
+
+void Entity::setPosition(float x, float y)
+{
+    setX(x);
+    setY(y);
+}
+// =============
+

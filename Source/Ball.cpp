@@ -19,6 +19,15 @@ Ball::Ball(float centerX, float centerY, float radius)
     setupColors();
 }
 
+void Ball::reset()
+{
+    m_X = 320.f;
+    m_Y = 240.f;
+
+    m_VelocityX = randomVelocity();
+    m_VelocityY = randomVelocity();
+}
+
 float Ball::randomVelocity() const
 {
     // Generate a random number between -1 and 1 inclusive
@@ -89,28 +98,16 @@ void Ball::hitPaddle()
     m_RotationDirection = -m_RotationDirection;
 }
 
-void Ball::checkWallCollisions()
+void Ball::hitHorizontalWall()
 {
-    // == Right wall
-    if ((m_X + m_Width / 2.f) >= 640.f)
-    {
-        m_VelocityX = -m_VelocityX;
-        m_RotationDirection = -m_RotationDirection;
-    }
+    m_VelocityY = -m_VelocityY;
+    m_RotationDirection = -m_RotationDirection;
+}
 
-    // == Bottom wall
-    if ((m_Y - m_Height / 2.f) <= 0.f)
-    {
-        m_VelocityY = -m_VelocityY;
-        m_RotationDirection = -m_RotationDirection;
-    }
-
-    // == Top wall
-    if ((m_Y + m_Height / 2.f) >= 480.f)
-    {
-        m_VelocityY = -m_VelocityY;
-        m_RotationDirection = -m_RotationDirection;
-    }
+void Ball::hitVerticalWall()
+{
+    m_VelocityX = -m_VelocityX;
+    m_RotationDirection = -m_RotationDirection;
 }
 
 void Ball::update(int delta)
@@ -119,8 +116,6 @@ void Ball::update(int delta)
     m_Y += (m_VelocityY * m_Speed * delta);
 
     m_Rotation += (m_RotationSpeed * m_RotationDirection);
-
-    checkWallCollisions();
 }
 
 void Ball::render()

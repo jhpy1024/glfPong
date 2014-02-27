@@ -17,7 +17,7 @@
 	<GL/freeglut.h>
 	<iostream>
 
-1393529639 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
+1393531385 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
 	"Entity.hpp"
 	"Paddle.hpp"
 	"Ball.hpp"
@@ -376,15 +376,15 @@
 	"Paddle.hpp"
 	<iostream>
 
-1393517599 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\entity.hpp
+1393531547 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\entity.hpp
 
-1393525802 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\ball.cpp
+1393531227 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\ball.cpp
 	"Ball.hpp"
 	<iostream>
 	<cstdlib>
 	<cmath>
 
-1393521322 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\ball.hpp
+1393531701 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\ball.hpp
 	"Entity.hpp"
 	<GL/glew.h>
 	<GL/gl.h>

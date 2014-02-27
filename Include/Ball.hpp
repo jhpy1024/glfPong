@@ -16,14 +16,16 @@ public:
     void render() override;
 
     void hitPaddle();
+    void hitHorizontalWall();
+    void hitVerticalWall();
+
+    void reset();
 
 private:
     void setupVertices();
     void setupColors();
 
     float randomVelocity() const;
-
-    void checkWallCollisions();
 
 private:
     GLuint m_VertexBuffer;

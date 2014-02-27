@@ -12,6 +12,7 @@
 Game::Game()
     : m_Lives(3)
     , m_Score(0)
+    , m_GameOver(false)
 {
 
 }
@@ -49,16 +50,60 @@ void Game::paddleBallCollisions(Paddle* paddle, Ball* ball)
     }
 }
 
+void Game::ballWallCollisions(Ball* ball)
+{
+    float x = ball->getX();
+    float y = ball->getY();
+    float width = ball->getWidth();
+    float height = ball->getHeight();
+
+    // == Right wall ==
+    if ((x + width / 2.f) >= 640.f)
+    {
+        ball->hitVerticalWall();
+    }
+
+    // == Bottom wall ==
+    if ((y + height / 2.f) >= 480.f)
+    {
+        ball->hitHorizontalWall();
+    }
+
+    // == Top wall ==
+    if (y <= 0.f)
+    {
+        ball->hitHorizontalWall();
+    }
+
+    // == Left wall ==
+    if (x <= 0.f)
+    {
+        if (m_Lives > 0)
+        {
+            --m_Lives;
+            ball->reset();
+        }
+        else
+        {
+            m_GameOver = true;
+        }
+    }
+}
+
 void Game::checkCollisions()
 {
     auto paddlePtr = static_cast<Paddle*>(m_Entities["Paddle"].get());
     auto ballPtr = static_cast<Ball*>(m_Entities["Ball"].get());
 
     paddleBallCollisions(paddlePtr, ballPtr);
+    ballWallCollisions(ballPtr);
 }
 
 void Game::update(int delta)
 {
+    if (m_GameOver)
+        std::cout << "Game over!" << std::endl;
+
     for (auto& entity : m_Entities)
         entity.second->update(delta);
 

@@ -15,6 +15,10 @@ public:
     float getWidth() const;
     float getHeight() const;
 
+    void setX(float x);
+    void setY(float y);
+    void setPosition(float x, float y);
+
 protected:
     float m_X;
     float m_Y;
