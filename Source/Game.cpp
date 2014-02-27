@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "Paddle.hpp"
+#include "Ball.hpp"
 
 #include <GL/gl.h>
 #include <GL/glut.h>
@@ -24,6 +25,7 @@ void Game::render()
 void Game::createEntities()
 {
     m_Entities["Paddle"] = std::unique_ptr<Paddle>(new Paddle(10.f, 10.f, 15.f, 150.f));
+    m_Entities["Ball"] = std::unique_ptr<Ball>(new Ball(320.f, 240.f, 10.f));
 }
 
 void Game::run()

@@ -1,14 +1,16 @@
 # depslib dependency file v1.0
-1393519073 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\main.cpp
+1393521665 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\main.cpp
 	<iostream>
+	<ctime>
 	<GL/glew.h>
 	<GL/glut.h>
 	<GL/glu.h>
 	"Game.hpp"
 
-1393519979 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
+1393521608 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
 	"Game.hpp"
 	"Paddle.hpp"
+	"Ball.hpp"
 	<GL/gl.h>
 	<GL/glut.h>
 
@@ -365,20 +367,21 @@
 	<GL/gl.h>
 	"Entity.hpp"
 
-1393519947 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\paddle.cpp
+1393521241 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\paddle.cpp
 	"Paddle.hpp"
 	<iostream>
 
 1393517599 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\entity.hpp
 
-1393430941 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\ball.cpp
+1393521884 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\ball.cpp
 	"Ball.hpp"
 	<iostream>
-	<ctime>
-	<random>
+	<cstdlib>
+	<cmath>
 
-1393451082 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\ball.hpp
+1393521322 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\ball.hpp
 	"Entity.hpp"
+	<GL/glew.h>
 	<GL/gl.h>
 
 1393517573 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\entity.cpp

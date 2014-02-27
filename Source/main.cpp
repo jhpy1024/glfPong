@@ -1,4 +1,5 @@
 #include <iostream>
+#include <ctime>
 
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -85,10 +86,14 @@ void setupGL()
     glDisable(GL_DEPTH_TEST);
     glEnableClientState(GL_VERTEX_ARRAY);
     glEnableClientState(GL_COLOR_ARRAY);
+
+    glEnable(GL_POINT_SMOOTH);
 }
 
 int main(int argc, char** argv)
 {
+    srand(time(NULL));
+
     glutInit(&argc, argv);
 
     createWindow();
