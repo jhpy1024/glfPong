@@ -7,7 +7,7 @@ public:
     Entity(float x, float y, float width, float height);
     virtual ~Entity() {};
 
-    virtual void update() = 0;
+    virtual void update(int delta) = 0;
     virtual void render() = 0;
 
     float getX() const;
