@@ -1,6 +1,7 @@
 # depslib dependency file v1.0
-1393346170 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\main.cpp
-	"Game.hpp"
+1393452083 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\main.cpp
+	<iostream>
+	<GL/glut.h>
 
 1393449134 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
 	"Game.hpp"
