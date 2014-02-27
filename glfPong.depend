@@ -1,22 +1,15 @@
 # depslib dependency file v1.0
-1393452083 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\main.cpp
+1393517466 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\main.cpp
 	<iostream>
 	<GL/glut.h>
-
-1393449134 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
-	"Game.hpp"
-	"Paddle.hpp"
-	"Ball.hpp"
-	<GL/glew.h>
-	<GL/gl.h>
 	<GL/glu.h>
-	<iostream>
+	"Game.hpp"
 
-1393448540 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
-	<SFML/Graphics.hpp>
-	"Entity.hpp"
-	<vector>
-	<memory>
+1393517283 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
+	"Game.hpp"
+	<GL/gl.h>
+
+1393517161 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
 
 1391887278 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\libraries\sfml2.1\sfml-2.1\include\sfml\graphics.hpp
 	<SFML/Window.hpp>
