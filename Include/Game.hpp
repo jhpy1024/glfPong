@@ -25,7 +25,7 @@ public:
 
 private:
     void createEntities();
-
+    void checkCollisions();
     void renderText(float x, float y, const std::string& text, float r, float g, float b);
 
 private:

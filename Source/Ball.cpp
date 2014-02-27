@@ -143,6 +143,8 @@ void Ball::render()
 
 Ball::~Ball()
 {
+    std::cout << "Freeing ball resources" << std::endl;
+
     glDeleteBuffers(1, &m_VertexBuffer);
     glDeleteBuffers(1, &m_ColorBuffer);
 }

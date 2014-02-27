@@ -6,15 +6,52 @@
 #include <GL/glut.h>
 #include <GL/freeglut.h>
 
+#include <iostream>
+
 Game::Game()
 {
 
+}
+
+void Game::checkCollisions()
+{
+    auto paddlePtr = static_cast<Paddle*>(m_Entities["Paddle"].get());
+    auto ballPtr = static_cast<Ball*>(m_Entities["Ball"].get());
+
+    float ballLeft = ballPtr->getX() - (ballPtr->getWidth());
+    float ballTop = ballPtr->getY() - (ballPtr->getHeight());
+    float ballBottom = ballTop + ballPtr->getHeight();
+    float ballRight = ballLeft + ballPtr->getWidth();
+
+    float paddleLeft = paddlePtr->getX();
+    float paddleTop = paddlePtr->getY();
+    float paddleBottom = paddleTop + paddlePtr->getHeight();
+    float paddleRight = paddleLeft + paddlePtr->getWidth();
+
+    bool intersecting = false;
+
+    if (paddleRight < ballLeft ||
+        paddleBottom < ballTop ||
+        paddleLeft > ballRight ||
+        paddleTop > paddleBottom)
+    {
+        intersecting = false;
+    }
+    else
+    {
+        intersecting = true;
+    }
+
+    if (intersecting)
+        ballPtr->hitPaddle();
 }
 
 void Game::update(int delta)
 {
     for (auto& entity : m_Entities)
         entity.second->update(delta);
+
+    checkCollisions();
 }
 
 void Game::render()
