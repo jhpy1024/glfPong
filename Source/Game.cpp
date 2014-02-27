@@ -4,6 +4,7 @@
 
 #include <GL/gl.h>
 #include <GL/glut.h>
+#include <GL/freeglut.h>
 
 Game::Game()
 {
@@ -20,6 +21,8 @@ void Game::render()
 {
     for (auto& entity : m_Entities)
         entity.second->render();
+
+    renderText(320.f, 240.f, "Hello, World!", 1.f, 0.f, 1.f);
 }
 
 void Game::createEntities()
@@ -79,4 +82,15 @@ void Game::specialKeyReleased(int key, int x, int y)
 void Game::mousePressed(int button, int state, int x, int y)
 {
 
+}
+
+// (x, y) = center of text
+void Game::renderText(float x, float y, const std::string& text, float r, float g, float b)
+{
+    void* font = GLUT_BITMAP_HELVETICA_18;
+
+    glColor3f(r, g, b);
+    glRasterPos2f(x - (glutBitmapLength(font, (const unsigned char*) text.c_str())) / 2.f, y + glutBitmapHeight(font) / 2.f);
+
+    glutBitmapString(font, (const unsigned char*) text.c_str());
 }
