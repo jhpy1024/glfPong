@@ -2,6 +2,8 @@
 #define GAME_HPP
 
 #include "Entity.hpp"
+#include "Paddle.hpp"
+#include "Ball.hpp"
 
 #include <map>
 #include <string>
@@ -26,10 +28,15 @@ public:
 private:
     void createEntities();
     void checkCollisions();
+    void paddleBallCollisions(Paddle* paddle, Ball* ball);
+    void ballWallCollisions(Ball* ball);
     void renderText(float x, float y, const std::string& text, float r, float g, float b);
 
 private:
     std::map<std::string, std::unique_ptr<Entity>> m_Entities;
+
+    unsigned m_Lives;
+    unsigned m_Score;
 };
 
 #endif // GAME_HPP

@@ -7,17 +7,20 @@
 	<GL/glu.h>
 	"Game.hpp"
 
-1393525831 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
+1393530556 source:c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\source\game.cpp
 	"Game.hpp"
 	"Paddle.hpp"
 	"Ball.hpp"
+	"Utils.hpp"
 	<GL/gl.h>
 	<GL/glut.h>
 	<GL/freeglut.h>
 	<iostream>
 
-1393525348 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
+1393529639 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\game.hpp
 	"Entity.hpp"
+	"Paddle.hpp"
+	"Ball.hpp"
 	<map>
 	<string>
 	<memory>
@@ -406,4 +409,11 @@
 
 1368276560 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\libraries\freeglut\include\gl\freeglut_ext.h
 	<stdarg.h>
+
+1393530481 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\utils.hpp
+	<string>
+	"Utils.inl"
+
+1393530545 c:\users\jhpy1024\documents\visual studio 2012\projects\glfpong\include\utils.inl
+	<sstream>
 

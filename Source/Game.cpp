@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include "Paddle.hpp"
 #include "Ball.hpp"
+#include "Utils.hpp"
 
 #include <GL/gl.h>
 #include <GL/glut.h>
@@ -9,31 +10,30 @@
 #include <iostream>
 
 Game::Game()
+    : m_Lives(3)
+    , m_Score(0)
 {
 
 }
 
-void Game::checkCollisions()
+void Game::paddleBallCollisions(Paddle* paddle, Ball* ball)
 {
-    auto paddlePtr = static_cast<Paddle*>(m_Entities["Paddle"].get());
-    auto ballPtr = static_cast<Ball*>(m_Entities["Ball"].get());
+    float ballLeft = ball->getX() - ball->getWidth();
+    float ballTop = ball->getY() - ball->getHeight();
+    float ballBottom = ballTop + ball->getHeight();
+    float ballRight = ballLeft + ball->getWidth();
 
-    float ballLeft = ballPtr->getX() - (ballPtr->getWidth());
-    float ballTop = ballPtr->getY() - (ballPtr->getHeight());
-    float ballBottom = ballTop + ballPtr->getHeight();
-    float ballRight = ballLeft + ballPtr->getWidth();
-
-    float paddleLeft = paddlePtr->getX();
-    float paddleTop = paddlePtr->getY();
-    float paddleBottom = paddleTop + paddlePtr->getHeight();
-    float paddleRight = paddleLeft + paddlePtr->getWidth();
+    float paddleLeft = paddle->getX();
+    float paddleTop = paddle->getY();
+    float paddleBottom = paddleTop + paddle->getHeight();
+    float paddleRight = paddleLeft + paddle->getWidth();
 
     bool intersecting = false;
 
     if (paddleRight < ballLeft ||
         paddleBottom < ballTop ||
         paddleLeft > ballRight ||
-        paddleTop > paddleBottom)
+        paddleTop > ballBottom)
     {
         intersecting = false;
     }
@@ -43,7 +43,18 @@ void Game::checkCollisions()
     }
 
     if (intersecting)
-        ballPtr->hitPaddle();
+    {
+        ball->hitPaddle();
+        ++m_Score;
+    }
+}
+
+void Game::checkCollisions()
+{
+    auto paddlePtr = static_cast<Paddle*>(m_Entities["Paddle"].get());
+    auto ballPtr = static_cast<Ball*>(m_Entities["Ball"].get());
+
+    paddleBallCollisions(paddlePtr, ballPtr);
 }
 
 void Game::update(int delta)
@@ -59,7 +70,8 @@ void Game::render()
     for (auto& entity : m_Entities)
         entity.second->render();
 
-    renderText(320.f, 240.f, "Hello, World!", 1.f, 0.f, 1.f);
+    renderText(320.f, 20.f, "Score: " + util::toString(m_Score), 0.f, 1.f, 1.f);
+    renderText(320.f, 40.f, "Lives: " + util::toString(m_Lives), 0.f, 1.f, 1.f);
 }
 
 void Game::createEntities()
