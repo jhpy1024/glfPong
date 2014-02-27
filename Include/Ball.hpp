@@ -19,13 +19,13 @@ public:
     void hitHorizontalWall();
     void hitVerticalWall();
 
-    void reset();
+    void reset(bool fullReset = false);
 
 private:
     void setupVertices();
     void setupColors();
 
-    float randomVelocity() const;
+    void setRandomVelocity();
 
 private:
     GLuint m_VertexBuffer;
@@ -34,11 +34,13 @@ private:
     float m_VelocityX;
     float m_VelocityY;
 
-    const float m_Speed;
+    float m_Speed;
+    const float m_SpeedIncrease;
 
     float m_Rotation;
     float m_RotationDirection;
-    const float m_RotationSpeed;
+    float m_RotationSpeed;
+    const float m_RotationSpeedIncrease;
 };
 
 #endif // BALL_HPP

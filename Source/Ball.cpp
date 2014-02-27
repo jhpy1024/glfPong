@@ -8,32 +8,40 @@
 
 Ball::Ball(float centerX, float centerY, float radius)
     : Entity(centerX, centerY, radius * 2.f, radius * 2.f)
-    , m_VelocityX(randomVelocity())
-    , m_VelocityY(randomVelocity())
     , m_Speed(300.f / 1000.f)
+    , m_SpeedIncrease(20.f / 1000.f)
     , m_Rotation(0.f)
     , m_RotationDirection(1.f)
     , m_RotationSpeed(5.f)
+    , m_RotationSpeedIncrease(0.5f)
 {
     setupVertices();
     setupColors();
+    setRandomVelocity();
 }
 
-void Ball::reset()
+void Ball::reset(bool fullReset)
 {
     m_X = 320.f;
     m_Y = 240.f;
 
-    m_VelocityX = randomVelocity();
-    m_VelocityY = randomVelocity();
+    if (fullReset)
+    {
+        m_Speed = 300.f / 1000.f;
+        m_Rotation = 0.f;
+        m_RotationSpeed = 5.f;
+    }
+
+    setRandomVelocity();
 }
 
-float Ball::randomVelocity() const
+void Ball::setRandomVelocity()
 {
-    // Generate a random number between -1 and 1 inclusive
-    float vel = -1.f + static_cast<float>(rand()) / (static_cast<float>(RAND_MAX/(1.f - (-1.f))));
+    float angle = rand() % 360;
+    float angleRads = (angle * PI) / 180.f;
 
-    return vel;
+    m_VelocityX = cos(angleRads);
+    m_VelocityY = sin(angleRads);
 }
 
 void Ball::setupVertices()
@@ -96,6 +104,7 @@ void Ball::hitPaddle()
 {
     m_VelocityX = -m_VelocityX;
     m_RotationDirection = -m_RotationDirection;
+    m_Speed += m_SpeedIncrease;
 }
 
 void Ball::hitHorizontalWall()

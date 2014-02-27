@@ -34,10 +34,12 @@ void Paddle::setupColors()
 
     float colors[] =
     {
+        // == Dark red ==
+        0.5f, 0.f, 0.f,
+        0.5f, 0.f, 0.f,
+        // == Red ==
         1.f, 0.f, 0.f,
-        0.f, 1.f, 0.f,
-        0.f, 0.f, 1.f,
-        1.f, 0.f, 1.f
+        1.f, 0.f, 0.f
     };
 
     glGenBuffers(1, &m_ColorBuffer);
